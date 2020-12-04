@@ -110,6 +110,6 @@ module.exports = (homebridge) => {
     HapService = homebridge.hap.Service;
     HapCharacteristic = homebridge.hap.Characteristic;
     hap = homebridge.hap;
-    homebridge.registerAccessory('X5', X5);
+    homebridge.registerAccessory('homebridge-airdog', 'AirDog', X5);
 };
 //# sourceMappingURL=index.js.map

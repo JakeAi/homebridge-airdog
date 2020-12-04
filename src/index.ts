@@ -53,7 +53,7 @@ export = (homebridge: API) => {
   HapCharacteristic = homebridge.hap.Characteristic;
   hap = homebridge.hap;
 
-  homebridge.registerAccessory('X5', X5);
+  homebridge.registerAccessory('homebridge-airdog', 'AirDog', X5);
 };
 
 class X5 implements AccessoryPlugin {
