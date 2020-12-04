@@ -2,7 +2,7 @@
   "name": "homebridge-airdog",
   "version": "1.0.0",
   "description": "Airdog plugin",
-  "main": "dist/index.js",
+  "main": "index.js",
   "engines": {
     "homebridge": ">=0.3.2"
   },
