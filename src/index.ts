@@ -53,7 +53,7 @@ export = (homebridge: API) => {
   HapCharacteristic = homebridge.hap.Characteristic;
   hap = homebridge.hap;
 
-  homebridge.registerAccessory('homebridge-airdog', 'AirDog', X5);
+  homebridge.registerAccessory('homebridge-airdog', 'Airdog', X5);
 };
 
 class X5 implements AccessoryPlugin {
@@ -78,6 +78,8 @@ class X5 implements AccessoryPlugin {
   private readonly switchService: Service;
   private readonly informationService: Service;
 
+  private readonly airQualitySensorService: Service;
+
   constructor(
     private logger: Logging, private  config: AccessoryConfig, private  api: API,
   ) {
@@ -85,9 +87,9 @@ class X5 implements AccessoryPlugin {
     this.logger = logger;
     this.name = config.name;
 
-    this.switchService = new hap.Service.AirPurifier(this.name);
-    let airQualitySensorService = new hap.Service.AirQualitySensor('Air Quality');
-    airQualitySensorService
+    // this.switchService = new hap.Service.AirPurifier(this.name);
+    this.airQualitySensorService = new hap.Service.AirQualitySensor('Air Quality');
+   this. airQualitySensorService
       .getCharacteristic(Characteristic.PM2_5Density)
       .on('get', this.getPM25.bind(this));
 
@@ -131,7 +133,7 @@ class X5 implements AccessoryPlugin {
   getServices(): Service[] {
     return [
       this.informationService,
-      this.switchService,
+      this.airQualitySensorService,
     ];
   }
 

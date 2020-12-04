@@ -65,9 +65,9 @@ class X5 {
         this.deviceNo = config.macAddress;
         this.logger = logger;
         this.name = config.name;
-        this.switchService = new hap.Service.AirPurifier(this.name);
-        let airQualitySensorService = new hap.Service.AirQualitySensor('Air Quality');
-        airQualitySensorService
+        // this.switchService = new hap.Service.AirPurifier(this.name);
+        this.airQualitySensorService = new hap.Service.AirQualitySensor('Air Quality');
+        this.airQualitySensorService
             .getCharacteristic(hap_nodejs_1.Characteristic.PM2_5Density)
             .on('get', this.getPM25.bind(this));
         this.informationService = new hap.Service.AccessoryInformation()
@@ -102,7 +102,7 @@ class X5 {
     getServices() {
         return [
             this.informationService,
-            this.switchService,
+            this.airQualitySensorService,
         ];
     }
 }
@@ -110,6 +110,6 @@ module.exports = (homebridge) => {
     HapService = homebridge.hap.Service;
     HapCharacteristic = homebridge.hap.Characteristic;
     hap = homebridge.hap;
-    homebridge.registerAccessory('homebridge-airdog', 'AirDog', X5);
+    homebridge.registerAccessory('homebridge-airdog', 'Airdog', X5);
 };
 //# sourceMappingURL=index.js.map
