@@ -30,5 +30,6 @@
   "engines": {
     "homebridge": ">=1.0.0"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "author": ""
 }
