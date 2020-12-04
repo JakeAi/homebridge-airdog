@@ -1,4 +1,5 @@
 {
+  "displayName": "Airdog",
   "name": "homebridge-airdog",
   "version": "1.0.0",
   "description": "Airdog plugin",
