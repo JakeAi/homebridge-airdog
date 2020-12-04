@@ -72,12 +72,20 @@ class X5 implements AccessoryPlugin {
 
   private readonly airQualitySensorService: Service;
 
+  private id: string;
+  private token: string;
+  private userNo: string;
+
   constructor(
-    private logger: Logging, private  config: AccessoryConfig, private  api: API,
+    private logger: Logging, private config: AccessoryConfig, private  api: API,
   ) {
     this.deviceNo = config.macAddress;
     this.logger = logger;
     this.name = config.name;
+
+    this.id = config.id;
+    this.token = config.token;
+    this.userNo = config.userNo;
 
     // this.switchService = new hap.Service.AirPurifier(this.name);
     this.airQualitySensorService = new hap.Service.AirQualitySensor('Air Quality');
@@ -106,9 +114,13 @@ class X5 implements AccessoryPlugin {
     // this.mqtt.register('purifier/server/app/sendPm/C8:93:46:31:8F:8A');
     // this.mqtt.register('purifier/server/app/dvcOfflineReply/C8:93:46:31:8F:8A');
 
+    this.mqtt.register<SendPm>('purifier/server/app/sendReset/9426896433')
+      .subscribe();
+    this.mqtt.register<SendPm>('purifier/server/app/dvcOfflineReply/C8:93:46:31:8F:8A')
+      .subscribe();
     this.mqtt.register<SendPm>('purifier/server/app/sendPm/C8:93:46:31:8F:8A')
       .subscribe((message) => {
-        this.pm = message.message.pm;
+        Object.assign(this, message.message);
       });
   }
 

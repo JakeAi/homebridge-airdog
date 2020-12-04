@@ -1,6 +1,6 @@
 export enum PowerState {
-  OFF,
-  ON
+  OFF = '00',
+  ON = '01'
 }
 
 export enum SwitchState {
@@ -17,10 +17,6 @@ export enum FanState {
   MAX = '04',
 }
 
-export enum Commands {
-  'getAll' = 'getAll',
-  'sendChildrenLock' = 'sendChildrenLock'
-}
 
 
 export interface SendPm {
@@ -34,3 +30,45 @@ export interface SendPm {
   pm: string
   speed: string
 }
+
+export interface SendPower {
+  deviceNo: string
+  language: string
+  openId: string
+  order: string
+  paramCode: number
+  smartCode: number
+  productId: string
+}
+
+export interface AllDeviceInfo {
+  deviceNo: string
+  language: string
+  openId: string
+  order: string
+  paramCode: number
+  productId: string
+}
+
+export interface SendCommand {
+  deviceNo: string
+  language: string
+  openId: string
+  order: string
+  paramCode: number
+  smartCode: number
+  productId: string
+}
+
+export enum Commands {
+  'sendPower'='sendPower',
+  'changeSpeed'='changeSpeed',
+  'getAll' = 'getAll',
+  'sendChildrenLock' = 'sendChildrenLock'
+}
+
+let topics = [
+  'purifier/server/app/sendPm/C8:93:46:31:8F:8A',
+  'purifier/app/switch/9426896433',
+  'purifier/app/changeSpeed/1058',
+];
