@@ -8,6 +8,10 @@
     "rxjs": "^6.6.3",
     "mqtt-pattern": "^1.2.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakeAi/homebridge-airdog.git"
+  },
   "homepage": "https://github.com/JakeAi/homebridge-airdog",
   "devDependencies": {
     "@types/node": "^14.14.6",
@@ -25,5 +29,6 @@
   ],
   "engines": {
     "homebridge": ">=1.0.0"
-  }
+  },
+  "license": "ISC"
 }
