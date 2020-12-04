@@ -48,14 +48,6 @@ let HapService, HapCharacteristic;
 let hap: HAP;
 
 
-export = (homebridge: API) => {
-  HapService = homebridge.hap.Service;
-  HapCharacteristic = homebridge.hap.Characteristic;
-  hap = homebridge.hap;
-
-  homebridge.registerAccessory('homebridge-airdog', 'Airdog', X5);
-};
-
 class X5 implements AccessoryPlugin {
   public deviceNo: string = 'C8:93:46:31:8F:8A';
   public language: string = 'en';
@@ -89,14 +81,16 @@ class X5 implements AccessoryPlugin {
 
     // this.switchService = new hap.Service.AirPurifier(this.name);
     this.airQualitySensorService = new hap.Service.AirQualitySensor('Air Quality');
-   this. airQualitySensorService
+    this.airQualitySensorService
       .getCharacteristic(Characteristic.PM2_5Density)
       .on('get', this.getPM25.bind(this));
 
 
     this.informationService = new hap.Service.AccessoryInformation()
-      .setCharacteristic(hap.Characteristic.Manufacturer, 'Custom Manufacturer')
-      .setCharacteristic(hap.Characteristic.Model, 'Custom Model');
+      .setCharacteristic(Characteristic.Manufacturer, 'Silicon Valley Air Experts')
+      .setCharacteristic(Characteristic.Model, 'AirDog X5')
+      .setCharacteristic(Characteristic.SerialNumber, 'X5');
+
 
     logger.info('Switch finished initializing!');
 
@@ -138,3 +132,12 @@ class X5 implements AccessoryPlugin {
   }
 
 }
+
+
+export = (homebridge: API) => {
+  HapService = homebridge.hap.Service;
+  HapCharacteristic = homebridge.hap.Characteristic;
+  hap = homebridge.hap;
+
+  homebridge.registerAccessory('homebridge-airdog', 'Airdog', X5);
+};

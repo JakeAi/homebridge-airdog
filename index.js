@@ -71,8 +71,9 @@ class X5 {
             .getCharacteristic(hap_nodejs_1.Characteristic.PM2_5Density)
             .on('get', this.getPM25.bind(this));
         this.informationService = new hap.Service.AccessoryInformation()
-            .setCharacteristic(hap.Characteristic.Manufacturer, 'Custom Manufacturer')
-            .setCharacteristic(hap.Characteristic.Model, 'Custom Model');
+            .setCharacteristic(hap_nodejs_1.Characteristic.Manufacturer, 'Silicon Valley Air Experts')
+            .setCharacteristic(hap_nodejs_1.Characteristic.Model, 'AirDog X5')
+            .setCharacteristic(hap_nodejs_1.Characteristic.SerialNumber, 'X5');
         logger.info('Switch finished initializing!');
         this.setupListeners();
     }
