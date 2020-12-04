@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/JakeAi/homebridge-airdog/issues"
   },
-  "homepage": "https://github.com/JakeAi/homebridge-airdog#readme"
+  "homepage": "https://github.com/JakeAi/homebridge-airdog#readme",
+  "keywords": [
+    "homebridge",
+    "homebridge-plugin",
+    "airdog",
+    "homekit"
+  ]
 }
